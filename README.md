@@ -1,8 +1,34 @@
 # Power Shot
 
-Script de Power Shot, funciona melhor em salas Real Soccer, feito em JavaScript
+Sistema de **Power Shot** (chute forte)
+
+Feito para Real Soccer, mas funciona em outros modos
 
 Funções: se o player conduzir a bola por x segundos, o chute dele será mais forte que um chute normal
+
+## Aviso ⚠
+
+Quando tornar sua sala pública, **REMOVA** essa parte do código, ela serve para dar adm para quem estiver testando (e todo mundo que tiver na sala)
+
+```js
+// adm para testes, REMOVA isso do seu codigo final.
+room.onPlayerChat = function(player, message) {
+
+    if (message.toLowerCase() === "!adm") {
+
+        if (player.admin) {
+            room.sendAnnouncement(
+                "Você já é ADM.",
+                player.id,
+                0xE53E3E,
+                "bold",
+                1
+            );
+
+            return false;
+        }
+```
+
 
 # Sumario
 
@@ -33,22 +59,28 @@ As configurações ficam no início do código:
 ```js
 const powertime = 5000;
 const power = 2.3;
-const ballcontacttolerance;
+const ballcontacttolerance = 3;
 ```
 
 ## Exemplos
 Define o tempo que o jogador precisa conduzir a bola para carregar o power shot
 
 Exemplo:
-```const powertime = 3000;```
+```js 
+const powertime = 3000;
+```
 
 Se o jogador conduzir a bola durante 3 segundos, o power será carregado
 
-```const power = 2.0;```
+```js 
+const power = 2.0;
+```
 
 A força do power shot, 3.0 = muito forte
 
-```const ballcontacttolerance = 3;```
+```js 
+const ballcontacttolerance = 3;
+```
 
 A tolerância do sistema da distância do player para a bola, quanto maior, maior a distância aceita
 
